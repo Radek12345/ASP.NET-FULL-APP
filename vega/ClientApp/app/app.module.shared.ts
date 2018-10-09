@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { MakeService } from './services/make.service';
+import { VehicleService } from './services/vehicle.service';
 
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { AppComponent } from './components/app/app.component';
@@ -36,7 +36,7 @@ import { CounterComponent } from './components/counter/counter.component';
         ])
     ],
     providers: [
-        MakeService
+        VehicleService
     ]
 })
 export class AppModuleShared {
