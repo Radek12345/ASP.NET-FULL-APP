@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using vega.Core;
+
 namespace vega.Persistence
 {
     public class UnitOfWork : IUnitOfWork
