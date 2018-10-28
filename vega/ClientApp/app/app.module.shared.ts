@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { ToastyModule } from 'ng2-toasty';
+import { BrowserModule } from "@angular/platform-browser";
 
 import { VehicleService } from './services/vehicle.service';
 
@@ -12,6 +14,13 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+
+import * as Sentry from "@sentry/browser";
+import { AppErrorHandler } from './app.error.handler';
+
+Sentry.init({
+    dsn: "https://397d835675bd4cc19ee6a118e4ba63ad@sentry.io/1310701"
+});
 
 @NgModule({
     declarations: [
@@ -23,9 +32,11 @@ import { CounterComponent } from './components/counter/counter.component';
         VehicleFormComponent
     ],
     imports: [
+        ToastyModule.forRoot(),
         CommonModule,
         HttpModule,
         FormsModule,
+        BrowserModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
@@ -36,6 +47,7 @@ import { CounterComponent } from './components/counter/counter.component';
         ])
     ],
     providers: [
+        { provide: ErrorHandler, useClass: AppErrorHandler },
         VehicleService
     ]
 })

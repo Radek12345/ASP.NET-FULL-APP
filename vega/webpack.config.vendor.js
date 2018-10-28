@@ -13,6 +13,8 @@ const treeShakableModules = [
     '@angular/platform-browser-dynamic',
     '@angular/router',
     'zone.js',
+    'ng2-toasty',
+    '@sentry/browser'
 ];
 const nonTreeShakableModules = [
     'bootstrap',
@@ -21,6 +23,7 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+    'ng2-toasty/bundles/style-bootstrap.css'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
