@@ -14,7 +14,8 @@ const treeShakableModules = [
     '@angular/router',
     'zone.js',
     'ng2-toasty',
-    '@sentry/browser'
+    '@sentry/browser',
+    'underscore'
 ];
 const nonTreeShakableModules = [
     'bootstrap',
