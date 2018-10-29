@@ -25,7 +25,8 @@ export class VehicleFormComponent implements OnInit {
     private vehicleService: VehicleService,
     private toastyService: ToastyService) { 
       route.params.subscribe(p => {
-        this.vehicle.id = +p['id'];
+        if (+p['id'])
+          this.vehicle.id = +p['id'];
       })
     }
 
