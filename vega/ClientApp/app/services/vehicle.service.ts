@@ -32,9 +32,20 @@ export class VehicleService {
             .map(res => res.json());
     }
 
-    getVehicles() {
-        return this.http.get(this.vehiclesEndpoint)
+    getVehicles(filter: object) {
+        return this.http.get(this.vehiclesEndpoint + '?' + this.toQueryString(filter))
             .map(res => res.json());
+    }
+
+    toQueryString(obj: any): string {
+        let parts = [];
+        for (let property in obj) {
+            let value = obj[property];
+
+            if (value != null && value != undefined) 
+                parts.push(encodeURIComponent(property) + "=" + encodeURIComponent(value));
+        }
+        return parts.join('&');
     }
 
     update(vehicle: SaveVehicle) {

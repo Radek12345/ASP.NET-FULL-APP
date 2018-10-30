@@ -42,6 +42,8 @@ namespace vega.Mapping
                 .ForMember(v => v.ContactPhone, opt => opt.MapFrom(vr => vr.Contact.Phone))
                 .ForMember(v => v.Features, opt => opt.Ignore())
                 .AfterMap(AddOrRemoveFeaturesFromVehicle);
+
+            CreateMap<FilterResource, Filter>();
         }
 
         private void AddOrRemoveFeaturesFromVehicle(SaveVehicleResource vr, Vehicle v) {
