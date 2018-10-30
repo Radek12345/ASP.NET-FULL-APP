@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using vega.Core.Models;
 
@@ -9,5 +10,6 @@ namespace vega.Core
         Task<Vehicle> GetVehicleLazy(int id);
         void Add(Vehicle vehicle);
         void Remove(Vehicle vehicle);
+        Task<IEnumerable<Vehicle>> GetVehicles();
     }
 }

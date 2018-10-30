@@ -17,6 +17,7 @@ import { CounterComponent } from './components/counter/counter.component';
 
 import * as Sentry from "@sentry/browser";
 import { AppErrorHandler } from './app.error.handler';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 
 Sentry.init({
     dsn: "https://397d835675bd4cc19ee6a118e4ba63ad@sentry.io/1310701"
@@ -29,7 +30,8 @@ Sentry.init({
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        VehicleFormComponent
+        VehicleFormComponent,
+        VehicleListComponent
     ],
     imports: [
         ToastyModule.forRoot(),
@@ -38,10 +40,11 @@ Sentry.init({
         FormsModule,
         BrowserModule,
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'vehicles/new', component: VehicleFormComponent },
             { path: 'vehicles/:id', component: VehicleFormComponent },
+            { path: 'vehicles', component: VehicleListComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
