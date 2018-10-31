@@ -43,7 +43,7 @@ namespace vega.Mapping
                 .ForMember(v => v.Features, opt => opt.Ignore())
                 .AfterMap(AddOrRemoveFeaturesFromVehicle);
 
-            CreateMap<FilterResource, Filter>();
+            CreateMap<VehicleQueryResource, VehicleQuery>();
         }
 
         private void AddOrRemoveFeaturesFromVehicle(SaveVehicleResource vr, Vehicle v) {
