@@ -19,6 +19,7 @@ import * as Sentry from "@sentry/browser";
 import { AppErrorHandler } from './app.error.handler';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { PaginationComponent } from './components/shared/pagination.component';
+import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
 
 Sentry.init({
     dsn: "https://397d835675bd4cc19ee6a118e4ba63ad@sentry.io/1310701"
@@ -33,7 +34,8 @@ Sentry.init({
         HomeComponent,
         VehicleFormComponent,
         VehicleListComponent,
-        PaginationComponent
+        PaginationComponent,
+        ViewVehicleComponent
     ],
     imports: [
         ToastyModule.forRoot(),
@@ -45,7 +47,8 @@ Sentry.init({
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'vehicles/new', component: VehicleFormComponent },
-            { path: 'vehicles/:id', component: VehicleFormComponent },
+            { path: 'vehicles/edit/:id', component: VehicleFormComponent },
+            { path: 'vehicles/:id', component: ViewVehicleComponent },
             { path: 'vehicles', component: VehicleListComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
