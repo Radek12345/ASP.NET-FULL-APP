@@ -8,6 +8,7 @@ namespace vega.Mapping
     public class MappingProfile : Profile
     {
         public MappingProfile() {
+            CreateMap<Photo, PhotoResource>();
             CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<Make, MakeResource>();
             CreateMap<Make, KeyValuePairResource>();
