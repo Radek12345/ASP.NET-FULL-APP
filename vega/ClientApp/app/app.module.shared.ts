@@ -1,8 +1,9 @@
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { PhotoService } from './services/photo.service';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ToastyModule } from 'ng2-toasty';
 import { BrowserModule } from "@angular/platform-browser";
@@ -58,8 +59,10 @@ Sentry.init({
     ],
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler },
+        { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
         VehicleService,
-        PhotoService
+        PhotoService,
+        ProgressService
     ]
 })
 export class AppModuleShared {
