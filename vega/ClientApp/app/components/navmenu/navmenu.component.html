@@ -12,7 +12,7 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']"  [routerLinkActiveOptions]="{exact: true}">
+                <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
                     <a [routerLink]="['/vehicles']">
                         <span class='glyphicon glyphicon-home'></span> Vehicles
                     </a>
@@ -24,5 +24,15 @@
                 </li>
             </ul>
         </div>
+
+        <button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+            Log In
+        </button>
+
+        <button class="btn btn-primary btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+            Log Out
+        </button>
+
+        <button (click)="auth.test()">Test</button>
     </div>
 </div>

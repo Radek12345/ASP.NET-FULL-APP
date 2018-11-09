@@ -12,7 +12,9 @@ export class AuthService {
     domain: 'vegaforlearn.auth0.com',
     responseType: 'token id_token',
     redirectUri: 'http://localhost:5000/vehicles',
-    scope: 'openid'
+    scope: 'openid',
+    audience: 'https://api.vega.com',
+    
   });
 
   constructor(public router: Router) {}
@@ -23,6 +25,9 @@ export class AuthService {
 
   public handleAuthentication(): void {
     this.auth0.parseHash((err, authResult) => {
+      console.log("authResult: ", authResult);
+
+      
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
@@ -48,9 +53,6 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    console.log(localStorage.getItem('access_token'));
-    console.log(localStorage.getItem('id_token'));
-    console.log(localStorage.getItem('expires_at'));
     this.router.navigate(['/']);
   }
 
@@ -61,5 +63,10 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
+  public test() {
+    console.log(localStorage.getItem('access_token'));
+    console.log(localStorage.getItem('id_token'));
+    console.log(localStorage.getItem('expires_at'));
+  }
 
 }
