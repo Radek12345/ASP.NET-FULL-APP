@@ -15,7 +15,9 @@ const treeShakableModules = [
     'zone.js',
     'ng2-toasty',
     '@sentry/browser',
-    'underscore'
+    'underscore',
+    '@reactivex/rxjs',
+    'auth0-js'
 ];
 const nonTreeShakableModules = [
     'bootstrap',
