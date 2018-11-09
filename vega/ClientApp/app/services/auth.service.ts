@@ -12,7 +12,7 @@ export class AuthService {
     domain: 'vegaforlearn.auth0.com',
     responseType: 'token id_token',
     redirectUri: 'http://localhost:5000/vehicles',
-    scope: 'openid',
+    scope: 'openid email profile',
     audience: 'https://api.vega.com',
     
   });
@@ -27,8 +27,13 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       console.log("authResult: ", authResult);
 
+     
+
       
       if (authResult && authResult.accessToken && authResult.idToken) {
+
+        console.log("email: ", authResult.idTokenPayload.email);
+
         window.location.hash = '';
         this.setSession(authResult);
         this.router.navigate(['/home']);
