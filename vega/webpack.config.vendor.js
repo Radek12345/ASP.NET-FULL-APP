@@ -17,7 +17,8 @@ const treeShakableModules = [
     '@sentry/browser',
     'underscore',
     '@reactivex/rxjs',
-    'auth0-js'
+    'auth0-js',
+    'angular2-jwt'
 ];
 const nonTreeShakableModules = [
     'bootstrap',

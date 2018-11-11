@@ -23,6 +23,7 @@
     "@types/auth0-js": "^8.11.7",
     "@types/underscore": "^1.8.9",
     "@types/webpack-env": "1.13.0",
+    "angular2-jwt": "^0.2.3",
     "angular2-template-loader": "0.6.2",
     "aspnet-prerendering": "^3.0.1",
     "aspnet-webpack": "^2.0.1",

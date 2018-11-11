@@ -1,3 +1,4 @@
+import { AdminComponent } from './components/admin/admin.component';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { PhotoService } from './services/photo.service';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -38,7 +39,8 @@ Sentry.init({
         VehicleFormComponent,
         VehicleListComponent,
         PaginationComponent,
-        ViewVehicleComponent
+        ViewVehicleComponent,
+        AdminComponent
     ],
     imports: [
         ToastyModule.forRoot(),
@@ -53,6 +55,7 @@ Sentry.init({
             { path: 'vehicles/edit/:id', component: VehicleFormComponent },
             { path: 'vehicles/:id', component: ViewVehicleComponent },
             { path: 'vehicles', component: VehicleListComponent },
+            { path: 'admin', component: AdminComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
