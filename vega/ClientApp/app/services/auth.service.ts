@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public isInRole(roleName: string) {
-    return this.roles.indexOf(roleName) > -1;
+    return this.roles ? this.roles.indexOf(roleName) > -1 : false;
   }
 
   public login(): void {
