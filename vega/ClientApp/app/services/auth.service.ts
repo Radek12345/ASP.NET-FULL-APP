@@ -45,7 +45,7 @@ export class AuthService {
   private setSession(authResult: any): void {
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     
-    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     this.setRoles(authResult.accessToken);
@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   public logout(): void {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     this.roles = [];

@@ -26,6 +26,7 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 import { PaginationComponent } from './components/shared/pagination.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
 import { AuthService } from './services/auth.service';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 Sentry.init({
     dsn: "https://397d835675bd4cc19ee6a118e4ba63ad@sentry.io/1310701"
@@ -65,13 +66,12 @@ Sentry.init({
     ],
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler },
-        { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
         VehicleService,
         PhotoService,
-        ProgressService,
         AuthService,
         AdminAuthGuard,
-        AuthGuard
+        AuthGuard,
+        AUTH_PROVIDERS
     ]
 })
 export class AppModuleShared {
