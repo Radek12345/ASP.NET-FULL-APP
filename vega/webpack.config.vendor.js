@@ -18,7 +18,9 @@ const treeShakableModules = [
     'underscore',
     '@reactivex/rxjs',
     'auth0-js',
-    'angular2-jwt'
+    'angular2-jwt',
+    'chart.js',
+    'angular2-chartjs'
 ];
 const nonTreeShakableModules = [
     'bootstrap',

@@ -27,6 +27,7 @@ import { PaginationComponent } from './components/shared/pagination.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
 import { AuthService } from './services/auth.service';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { ChartModule } from 'angular2-chartjs';
 
 Sentry.init({
     dsn: "https://397d835675bd4cc19ee6a118e4ba63ad@sentry.io/1310701"
@@ -51,6 +52,7 @@ Sentry.init({
         HttpModule,
         FormsModule,
         BrowserModule,
+        ChartModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
