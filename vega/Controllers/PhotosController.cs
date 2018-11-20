@@ -19,22 +19,22 @@ namespace vega.Controllers
         private readonly IHostingEnvironment host;
         private readonly IVehicleRepository vehicleRepository;
         private readonly IPhotoRepository photoRepository;
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IPhotoService photoService;
         private readonly IMapper mapper;
         private readonly PhotoSettings photoSettings;
 
         public PhotosController(IHostingEnvironment host,
             IVehicleRepository vehicleRepository,
             IPhotoRepository photoRepository,
-            IUnitOfWork unitOfWork,
+            IPhotoService photoService,
             IMapper mapper,
             IOptionsSnapshot<PhotoSettings> options)
         {
             this.photoSettings = options.Value;
             this.mapper = mapper;
-            this.unitOfWork = unitOfWork;
             this.vehicleRepository = vehicleRepository;
             this.photoRepository = photoRepository;
+            this.photoService = photoService;
             this.host = host;
         }
 
@@ -59,20 +59,7 @@ namespace vega.Controllers
             if (!photoSettings.IsSupported(file.FileName)) return BadRequest("Invalid file type.");
 
             var uploadsFolderPath = Path.Combine(host.WebRootPath, "uploads");
-            if (!Directory.Exists(uploadsFolderPath))
-                Directory.CreateDirectory(uploadsFolderPath);
-
-            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(uploadsFolderPath, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            var photo = new Photo { FileName = fileName };
-            vehicle.Photos.Add(photo);
-            await unitOfWork.CompleteAsync();
+            var photo = await photoService.UploadPhoto(vehicle, file, uploadsFolderPath);
 
             return Ok(mapper.Map<Photo, PhotoResource>(photo));
         }
